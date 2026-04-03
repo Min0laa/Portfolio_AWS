@@ -2,7 +2,7 @@
 
 > **Live:** [https://sachamorin.fr](https://sachamorin.fr)
 
-![Portfolio Preview](docs/preview.png)
+![Portfolio Preview](docs/ok)
 
 A production-grade, fully serverless portfolio deployed on AWS — built from scratch and automated with Terraform IaC. Custom domain via OVH Cloud, HTTPS enforced via ACM + CloudFront.
 
