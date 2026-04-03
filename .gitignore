@@ -1,0 +1,22 @@
+# Terraform
+infra/.terraform/
+infra/.terraform.lock.hcl
+infra/tfplan
+infra/*.tfstate
+infra/*.tfstate.backup
+infra/.terraform.tfvars
+infra/environments/*.tfvars
+
+# Lambda build artifacts
+infra/lambda/**/*.zip
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Backup folder
+backup_white_theme/
+
+# Skills (internal config)
+.agents/
+skills-lock.json

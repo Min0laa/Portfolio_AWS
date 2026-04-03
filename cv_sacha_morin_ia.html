@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacha Morin — CV</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    @page { size: A4; margin: 0; }
+
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #d0d4dc;
+      color: #111;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      font-size: 8pt;
+      line-height: 1.4;
+    }
+
+    /* ══ PAGE ══ */
+    .page {
+      width: 210mm;
+      height: 297mm;
+      margin: 18px auto;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: 0 6px 36px rgba(0,0,0,0.16);
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { margin: 0; box-shadow: none; }
+    }
+
+    /* ══ HEADER ══ */
+    .cv-header {
+      padding: 14px 24px 10px;
+      text-align: center;
+      border-bottom: 1.5px solid #111;
+    }
+
+    .cv-name {
+      font-size: 18pt;
+      font-weight: 900;
+      letter-spacing: -0.8px;
+      color: #0f172a;
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+
+    .cv-role {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 1px;
+    }
+
+    .cv-school {
+      font-size: 7pt;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    /* monochrome availability badge */
+    .cv-avail {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #333;
+      border-radius: 20px;
+      padding: 2px 10px;
+      font-size: 7pt;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 5px;
+    }
+
+    .avail-dot {
+      width: 5px; height: 5px;
+      background: #111;
+      border-radius: 50%;
+    }
+
+    .cv-contact {
+      font-size: 7pt;
+      color: #444;
+    }
+
+    .cv-contact a { color: #111; text-decoration: underline; }
+
+    /* ══ BODY ══ */
+    .cv-body {
+      flex: 1;
+      padding: 8px 24px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    /* Subtle separator between each section block */
+    .cv-body > div {
+      border-bottom: 0.6px solid #d0d0d0;
+      padding-bottom: 6px;
+    }
+    .cv-body > div:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    /* Section title */
+    .sec-title {
+      font-size: 6pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: #111;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sec-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #111;
+      border-radius: 1px;
+      flex-shrink: 0;
+    }
+
+    /* ══ PROFILE ══ */
+    .profile-text {
+      font-size: 7.3pt;
+      color: #111;
+      line-height: 1.5;
+      text-align: justify;
+    }
+
+    /* ══ CERTS TABLE ══ */
+    .cert-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .cert-table td {
+      padding: 3px 0;
+      vertical-align: middle;
+      font-size: 7pt;
+    }
+
+    /* Name column */
+    .cert-table .ct-name {
+      font-weight: 700;
+      color: #111;
+      width: 44%;
+    }
+
+    /* Stack/provider column */
+    .cert-table .ct-stack {
+      color: #555;
+      font-size: 6.8pt;
+      width: 42%;
+      padding-left: 10px;
+    }
+
+    /* Status column */
+    .cert-table .ct-status {
+      text-align: right;
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #111;
+      white-space: nowrap;
+      width: 14%;
+    }
+
+    .ct-status.done {
+      color: #555;
+    }
+
+    .ct-status.ongoing {
+      color: #888;
+      font-weight: 400;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* ══ EXPERIENCE ══ */
+    .exp-item { margin-bottom: 9px; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 1px;
+    }
+
+    .exp-title {
+      font-size: 7.8pt;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .exp-title-meta {
+      font-weight: 400;
+      color: #555;
+      font-size: 7.3pt;
+    }
+
+    .exp-right {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .exp-date { font-size: 7pt; color: #444; }
+
+    /* monochrome prize chips */
+    .prize-chip {
+      font-size: 6.2pt;
+      font-weight: 700;
+      padding: 1.5px 7px;
+      border-radius: 3px;
+      white-space: nowrap;
+      background: #f4f4f4;
+      color: #111;
+      border: 1px solid #999;
+    }
+
+    /* all chips same neutral style */
+    .prize-chip.gold  { background: #f4f4f4; color: #111; border-color: #888; }
+    .prize-chip.silver { background: #f4f4f4; color: #111; border-color: #aaa; }
+    .prize-chip.money  { background: #f4f4f4; color: #111; border-color: #999; }
+
+    .exp-sub {
+      font-size: 6.5pt;
+      color: #555;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+
+    .exp-sub a { color: #111; text-decoration: underline; }
+
+    .exp-list {
+      padding-left: 8px;
+      list-style: none;
+    }
+
+    .exp-list li {
+      position: relative;
+      padding-left: 7px;
+      font-size: 7.3pt;
+      color: #222;
+      margin-bottom: 2px;
+      line-height: 1.45;
+    }
+
+    .exp-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: #555;
+    }
+
+    /* ══ BOTTOM 2-COL ══ */
+    .bottom-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Education items */
+    .edu-item { margin-bottom: 9px; }
+    .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+    .edu-title { font-size: 7.5pt; font-weight: 700; color: #111; }
+    .edu-date { font-size: 6.5pt; color: #444; white-space: nowrap; }
+    .edu-sub { font-size: 6.5pt; color: #555; font-style: italic; margin-top: 1px; }
+    .edu-note {
+      display: inline-block;
+      font-size: 6pt;
+      font-weight: 700;
+      background: #f4f4f4;
+      border: 1px solid #999;
+      color: #111;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-top: 3px;
+    }
+
+    /* Skills */
+    .skill-row {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 7px;
+      align-items: baseline;
+    }
+
+    .skill-cat {
+      font-size: 7pt;
+      font-weight: 700;
+      color: #111;
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .skill-val {
+      font-size: 7pt;
+      color: #333;
+      line-height: 1.45;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══ HEADER ══ -->
+  <div class="cv-header">
+    <div class="cv-name">Sacha Morin</div>
+    <div class="cv-role">AI / LLM Engineer — 42 Paris · Seeking 6-Month Internship</div>
+    <div class="cv-school">Software Engineering — RNCP Level 7 in progress (equiv. Master's Bac+5)</div>
+    <div class="cv-avail">
+      <span class="avail-dot"></span>
+      Available Immediately — AI / ML / LLM Internship · Paris &amp; Remote
+    </div>
+    <div class="cv-contact">
+      Paris, France · +33 6 36 11 34 60 · sachamorin65@gmail.com<br>
+      <a href="https://sachamorin.fr">sachamorin.fr</a> ·
+      <a href="https://linkedin.com/in/sacha-morin60">linkedin.com/in/sacha-morin60</a> ·
+      <a href="https://github.com/Min0laa">github.com/Min0laa</a>
+    </div>
+  </div>
+
+  <!-- ══ BODY ══ -->
+  <div class="cv-body">
+
+    <!-- PROFILE -->
+    <div>
+      <div class="sec-title">Profile</div>
+      <p class="profile-text">
+        Software engineer trained at <strong>42 Paris</strong> (RNCP Level 7 in progress, equiv. Master's), specialised in <strong>AI / LLM / systems</strong>. <strong>1st place</strong> at the Gemini 3 Paris Hackathon (Google DeepMind × Cerebral Valley, 2026). <strong>Top 7 worldwide finalist</strong> at the Mistral AI Worldwide Hackathon (100+ teams). <strong>$20,000+</strong> won at EthGlobal Bangkok 2024. Co-president of <strong>42Blockchain</strong> — world's largest blockchain student association (2,063 members, 30+ countries). I build end-to-end LLM pipelines, autonomous AI agents and RAG systems. Pursuing <strong>AWS Solutions Architect</strong> and <strong>AWS AI Practitioner</strong> certifications. Fluent English — 3 months London, 6 months San Diego.
+      </p>
+    </div>
+
+    <!-- CERTIFICATIONS -->
+    <div>
+      <div class="sec-title">Certifications &amp; Continuous Learning</div>
+      <table class="cert-table">
+        <tr>
+          <td class="ct-name">AWS Solutions Architect &mdash; Associate</td>
+          <td class="ct-stack">Amazon Web Services &middot; Cloud Infrastructure &middot; IaC &middot; High availability</td>
+          <td class="ct-status">In&nbsp;Progress</td>
+        </tr>
+        <tr>
+          <td class="ct-name">AWS AI Practitioner</td>
+          <td class="ct-stack">Amazon Web Services &middot; Bedrock &middot; SageMaker &middot; ML services</td>
+          <td class="ct-status">In&nbsp;Progress</td>
+        </tr>
+        <tr>
+          <td class="ct-name">Alyra &mdash; Rust Programming</td>
+          <td class="ct-stack">Rust &middot; Blockchain &middot; Low-level systems</td>
+          <td class="ct-status done">2024</td>
+        </tr>
+        <tr>
+          <td class="ct-name">AI Research &mdash; Active self-study</td>
+          <td class="ct-stack">ArXiv &middot; Hugging Face &middot; Papers With Code &middot; scratch implementations</td>
+          <td class="ct-status ongoing">ongoing</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div>
+      <div class="sec-title">Experience &amp; Projects</div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">sachamorin.fr — Serverless AWS Deployment <span class="exp-title-meta">| Terraform, S3, CloudFront, Lambda, DynamoDB, ACM, Route 53, IAM</span></div>
+          <div class="exp-right"><span class="exp-date">2026</span></div>
+        </div>
+        <div class="exp-sub">Infrastructure as Code · OVH Cloud domain · <a href="https://sachamorin.fr">sachamorin.fr</a></div>
+        <ul class="exp-list">
+          <li>Production-grade serverless AWS stack via Terraform IaC: private S3 + CloudFront (OAC), Lambda visit counter + API Gateway + DynamoDB, ACM SSL + Route 53 apex Alias, enforced HTTPS</li>
+          <li>AWS Budgets FinOps alert at $5/month · IAM least-privilege roles · remote Terraform state in S3 · custom domain via OVH Cloud</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Ad-SuperSense — Gemini 3 Paris Hackathon <span class="exp-title-meta">| Python, FastAPI, Gemini, Plasmo/React, ffmpeg, yt-dlp</span></div>
+          <div class="exp-right"><span class="prize-chip gold">🥇 1st Place</span><span class="exp-date">2026</span></div>
+        </div>
+        <div class="exp-sub">Google DeepMind × Cerebral Valley · <a href="https://github.com/Min0laa/Ad-SuperSense">github.com/Min0laa/Ad-SuperSense</a></div>
+        <ul class="exp-list">
+          <li>AI ad injection pipeline for YouTube — detects peak-energy moments in any video and generates frame-precise handoff packages for AI-rendered ads (Gemini multimodal API)</li>
+          <li>FastAPI backend + Chrome extension (Plasmo/React) injecting into YouTube Studio · ffmpeg + yt-dlp for frame extraction</li>
+          <li><strong>Prizes:</strong> $50,000 Gemini API credits · one-on-one with Google AIFF founders · $5,000 Replit credits · 6 months Hugging Face Pro</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Vibe AR — Mistral AI Worldwide Hackathon <span class="exp-title-meta">| Mistral Large 3, Voxtral, Three.js, WebXR, ElevenLabs</span></div>
+          <div class="exp-right"><span class="prize-chip silver">🏅 Top 7 Worldwide</span><span class="exp-date">Feb–Mar 2026</span></div>
+        </div>
+        <div class="exp-sub">100+ teams · 36h · Paris</div>
+        <ul class="exp-list">
+          <li>AR code assistant running inside Meta Quest 3 — speak to the AI, watch your app build in 3D; speech-to-text via <strong>Voxtral Realtime</strong>, reasoning via <strong>Mistral Large 3</strong>, voice via ElevenLabs, AR layer via <strong>Three.js/WebXR</strong></li>
+          <li>Hand tracking, 3D file explorer, and live code preview — all in the headset</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Quiz Game MCP — Mistral AI × MCP Hackathon <span class="exp-title-meta">| Python, FastAPI, Mistral API, FastMCP, Docker</span></div>
+          <div class="exp-right"><span class="exp-date">2025</span></div>
+        </div>
+        <ul class="exp-list">
+          <li>Real-time multiplayer quiz — Mistral AI generates questions via LLM API; <strong>MCP server</strong> allows autonomous AI agents to join, answer questions and track scores in real time · Full-stack: FastAPI + Docker</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">Co-President — 42Blockchain</div>
+          <div class="exp-right"><span class="exp-date">Jan 2024 – 2025</span></div>
+        </div>
+        <div class="exp-sub">World's largest blockchain student association · 2,063 members · 30+ countries · 54 campuses · 10 partners</div>
+        <ul class="exp-list">
+          <li>Took over an abandoned association — built a team, defined strategy, achieved ×50 growth in 12 months</li>
+          <li>Partnerships with Algorand, Solana, Ledger · hackathons at 42 Paris · students sent to Thailand, Singapore, Berlin, Brussels</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header">
+          <div class="exp-title">APE ID — EthGlobal Bangkok 2024 <span class="exp-title-meta">| Next.js, Wagmi, Viem, Base L2, ENS, NFC</span></div>
+          <div class="exp-right"><span class="prize-chip money">$20,000+</span><span class="exp-date">2024</span></div>
+        </div>
+        <ul class="exp-list">
+          <li>Phygital Web3 passport — ENS subdomains linked to NFC wristbands for on-chain identity verification; burner wallets + event gating + Discord community gating</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BOTTOM: EDUCATION + SKILLS -->
+    <div class="bottom-cols">
+
+      <!-- Education -->
+      <div>
+        <div class="sec-title">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div class="edu-title">42 Paris — Software Engineering</div>
+            <span class="edu-date">Nov 2023 – Present</span>
+          </div>
+          <div class="edu-sub">Common core · C, C++, systems, networking, Docker · RNCP Level 7 (IA / Algo) in progress — equiv. Master's (Bac+5)</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div class="edu-title">Alyra — Rust Programming</div>
+            <span class="edu-date">2024</span>
+          </div>
+          <div class="edu-sub">Rust applied to blockchain and low-level systems</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div class="edu-title">EF Education First — English &amp; Finance</div>
+            <span class="edu-date">Jan – Jun 2023</span>
+          </div>
+          <div class="edu-sub">San Diego, CA · Language certificate · 6 months immersion</div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-header">
+            <div class="edu-title">Baccalauréat Général</div>
+            <span class="edu-date">2022</span>
+          </div>
+          <div class="edu-sub">Physics · Biology · Advanced Mathematics</div>
+        </div>
+      </div>
+
+      <!-- Technical Skills -->
+      <div>
+        <div class="sec-title">Technical Skills</div>
+
+        <div class="skill-row">
+          <span class="skill-cat">AI &amp; LLMs:</span>
+          <span class="skill-val">Python, PyTorch, FastAPI, Mistral API, Gemini, MCP Protocol, RAG, LLMs</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Cloud &amp; DevOps:</span>
+          <span class="skill-val">AWS Bedrock, Docker, MongoDB, Nginx, Git, PostgreSQL, MongoDB</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Systems (42 Paris):</span>
+          <span class="skill-val">C, C++, Shell, POSIX threads, TCP/IP sockets, Valgrind</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Web &amp; APIs:</span>
+          <span class="skill-val">TypeScript, Next.js, React, Three.js, WebXR, REST, WebSocket</span>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat">Soft skills:</span>
+          <span class="skill-val">Leadership, partnerships, fast execution, peer reviews, international</span>
+        </div>
+      </div>
+    </div>
+    <!-- end bottom-cols -->
+
+  </div>
+  <!-- end cv-body -->
+
+</div>
+</body>
+</html>

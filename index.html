@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sacha Morin — AI Engineer · 42 Paris</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- TOP NAV -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <div class="nav-left">
+        <div class="nav-logo">Sacha Morin</div>
+        <span class="nav-status" data-i18n="status.available">[ STATUS: AVAILABLE_FOR_INTERNSHIP ]</span>
+      </div>
+
+      <div class="nav-controls">
+        <div class="nav-links">
+          <a href="#" onclick="showSection('index', this); return false;" class="active" data-i18n="nav.index">Index</a>
+          <a href="#" onclick="showSection('parcours', this); return false;" data-i18n="nav.background">Background</a>
+          <a href="#" onclick="showSection('competences', this); return false;" data-i18n="nav.skills">Skills</a>
+          <a href="#" onclick="showSection('portfolio', this); return false;" data-i18n="nav.portfolio">Portfolio</a>
+        </div>
+        <button id="theme-toggle" class="ctrl-btn" onclick="toggleTheme()" title="Toggle Theme">🌗</button>
+        <button id="lang-toggle" class="ctrl-btn" onclick="toggleLang()" title="Switch Language">EN</button>
+        <button class="hamburger" onclick="toggleMobileNav()">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a href="#" onclick="showSection('index', this); toggleMobileNav(); return false;" data-i18n="nav.index">Index</a>
+    <a href="#" onclick="showSection('parcours', this); toggleMobileNav(); return false;" data-i18n="nav.background">Background</a>
+    <a href="#" onclick="showSection('competences', this); toggleMobileNav(); return false;" data-i18n="nav.skills">Skills</a>
+    <a href="#" onclick="showSection('portfolio', this); toggleMobileNav(); return false;" data-i18n="nav.portfolio">Portfolio</a>
+    <a href="CV_Sacha_Morin.pdf" target="_blank" data-i18n="nav.cv">CV</a>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+
+  <div id="section-index" class="spa-section active" style="display:block;">
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="block">
+          <img src="sacha_profile.jpeg" alt="Sacha Morin" class="hero-avatar" style="border: 2px solid var(--border-light);">
+        </div>
+        <div class="hero-text-block">
+          <div class="hero-title-row">
+            <h1 data-i18n="index.hi">Hi, I'm Sacha Morin.</h1>
+            <div class="social-links" style="margin-left: 8px; display: flex; gap: 12px; align-items: center;">
+              <a href="mailto:sacha.morin.ia@gmail.com" aria-label="Mail" style="display:flex;align-items:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10z" />
+                  <path d="M3 7l9 6l9 -6" />
+                </svg>
+              </a>
+              <a href="https://github.com/Min0laa" target="_blank" aria-label="GitHub"
+                style="display:flex;align-items:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path
+                    d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                </svg>
+              </a>
+              <a href="https://x.com/sacha_morin" target="_blank" aria-label="X"
+                style="display:flex;align-items:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                  <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/sacha-morin60/" target="_blank" aria-label="LinkedIn"
+                style="display:flex;align-items:center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M8 11v5" />
+                  <path d="M8 8v.01" />
+                  <path d="M12 16v-5" />
+                  <path d="M16 16v-3a2 2 0 1 0 -4 0" />
+                  <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+          <p data-i18n="index.desc">
+            Trained at <strong>42 Paris</strong>. I build intelligent systems at the intersection of AI and low-level
+            engineering. I grasp complex architectural paradigms quickly, ship rapidly under pressure, and win
+            hackathons. Seeking a 6-month AI/ML internship.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div style="margin-top: 24px;">
+      <a href="CV_Sacha_Morin.pdf" target="_blank" class="mono-link" data-i18n="index.dl_cv">[0] Download_CV.pdf</a>
+      <a href="#" onclick="showSection('portfolio', document.querySelectorAll('.nav-links a')[3]); return false;" class="mono-link" data-i18n="index.view_port">[1] View_Portfolio</a>
+    </div>
+
+    <h3 data-i18n="index.highlights">Top Highlights</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.ad_super">1st Place — Gemini 3 Paris Hackathon</div>
+          <div class="info-meta" data-i18n="port.ad_super.meta">2026 // Google DeepMind</div>
+        </div>
+        <p class="info-desc" data-i18n="port.ad_super.desc">Ad-SuperSense: AI ad injection pipeline for YouTube. Won
+          $50,000 in Gemini API credits + access to Google AIFF founders. Built with FastAPI and Gemini multimodal
+          indexing.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.mistral">Top 7 Worldwide — Mistral AI Hackathon</div>
+          <div class="info-meta" data-i18n="port.mistral.meta">2026 // Mistral</div>
+        </div>
+        <p class="info-desc" data-i18n="port.mistral.desc">Vibe AR: Voice-controlled AR code assistant running directly
+          inside a Meta Quest 3. Built with Mistral Large 3, Voxtral, and Three.js/WebXR. Finalist among 100+ global
+          teams.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.mcp">Mistral AI × MCP Hackathon</div>
+          <div class="info-meta" data-i18n="port.mcp.meta">2025 // MCP Protocol</div>
+        </div>
+        <p class="info-desc" data-i18n="port.mcp.desc">Quiz Game MCP: Real-time multiplayer quiz with LLM-generated
+          questions. Implemented an MCP server allowing autonomous AI assistants to play the game securely via API
+          constraints.</p>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="index.stack">Stack</h3>
+    <div class="tag-container">
+      <span class="tag">Python</span>
+      <span class="tag">FastAPI</span>
+      <span class="tag">Mistral</span>
+      <span class="tag">MCP Protocol</span>
+      <span class="tag">C/C++</span>
+      <span class="tag">Docker</span>
+      <span class="tag">AWS Bedrock</span>
+      <span class="tag">RAG Systems</span>
+    </div>
+
+    <h3 data-i18n="index.philosophy">Core Philosophy & Interests</h3>
+    <div class="info-list" style="gap: 24px; margin-top: 16px;">
+      <div class="info-item">
+        <div class="info-title" data-i18n="phil.problem.title">Hardcore Problem Solving</div>
+        <p class="info-desc" data-i18n="phil.problem.desc">I love racking my brain on complex algorithms and low-level
+          system intricacies. No black boxes, just pure understanding of the mechanics underneath.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-title" data-i18n="phil.learning.title">Continuous Learning</div>
+        <p class="info-desc" data-i18n="phil.learning.desc">My primary drive is learning new paradigms. Throw any new
+          technology, whitepaper or language at me, and I will understand and build with it rapidly.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-title" data-i18n="phil.euro.title">European Tech Sovereignty</div>
+        <p class="info-desc" data-i18n="phil.euro.desc">Deeply committed to the European AI ecosystem. I believe we have
+          the talent to compete globally, and I want to be on the front lines building our sovereign infrastructure.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="section-parcours" class="spa-section" style="display:none;">
+    <h1 data-i18n="parc.title">Background</h1>
+    <h2 data-i18n="parc.subtitle">Education · Experience · Commitments</h2>
+
+    <h3 data-i18n="parc.exp.h3">Experience & Leadership</h3>
+    <div class="info-list">
+      
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.exp1.t">Co-President — 42Blockchain</div>
+          <div class="info-meta" data-i18n="parc.exp1.m">Jan 2024 – 2025 // Paris, France</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.exp1.p">Revitalized an abandoned student association into the world's largest student blockchain union with 2,063 members across 30+ countries. Secured partnerships with Algorand, Solana, and Ledger. Organized events and dispatched students to international hackathons (Bangkok, Singapore, Brussels, Berlin).</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.exp2.t">Human Resources Advisor</div>
+          <div class="info-meta" data-i18n="parc.exp2.m">2022 - 2024 // Pôle Emploi - France Travail</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.exp2.p">Analyzed complex organizational logic and advised businesses on talent acquisition structuring.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.exp3.t">Hotel Receptionist</div>
+          <div class="info-meta" data-i18n="parc.exp3.m">Sept – Dec 2022 // London, UK</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.exp3.p">Front desk operations in a 100% English-speaking environment. Total linguistic immersion resulting in professional-level fluency.</p>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="parc.cert.h3">Certifications</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.cert1.t">AWS Solutions Architect — Associate</div>
+          <div class="info-meta" data-i18n="parc.cert1.m">In Progress</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.cert1.p">Cloud architecture, Infrastructure as Code, high availability, and AWS security. (EC2, S3, Lambda, VPC, IAM, CloudFormation).</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.cert2.t">AWS AI Practitioner</div>
+          <div class="info-meta" data-i18n="parc.cert2.m">In Progress</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.cert2.p">Machine Learning pipelines, model inference, and deployment using AWS Bedrock, SageMaker, Rekognition, and Comprehend.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.cert3.t">Alyra — Rust Programming</div>
+          <div class="info-meta" data-i18n="parc.cert3.m">Completed 2024</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.cert3.p">Rust certification applied to low-level systems and blockchain (Ownership, borrowing, lifetimes, safe concurrency).</p>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="parc.edu.h3">Education</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.edu1.t">42 Paris — Software Engineering</div>
+          <div class="info-meta" data-i18n="parc.edu1.m">Nov 2023 – Present // Paris, France</div>
+        </div>
+        <div class="tag-container" style="margin-bottom: 8px;">
+          <span class="tag" data-i18n="parc.edu1.tag">RNCP Level 7 (Master's Equivalent)</span>
+        </div>
+        <p class="info-desc" data-i18n="parc.edu1.p">Intensive peer-to-peer curriculum. System programming in C (memory, processes, sockets), OOP in C++, networking (TCP/IP, HTTP servers from scratch), multithreading, and advanced Linux/Docker administration.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.edu2.t">EF Education First — Language & Finance</div>
+          <div class="info-meta" data-i18n="parc.edu2.m">Jan – Jun 2023 // San Diego, CA</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.edu2.p">English language diploma with supplementary modules in finance. 6 months of total immersion on an American campus.</p>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="parc.edu3.t">General Baccalaureate</div>
+          <div class="info-meta" data-i18n="parc.edu3.m">2022 // France</div>
+        </div>
+        <p class="info-desc" data-i18n="parc.edu3.p">Solid scientific foundation — Specialties in Physics, Chemistry, Biology, and Expert Mathematics.</p>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="parc.lang.h3">Languages</h3>
+    <div class="tag-container">
+      <span class="tag" data-i18n="parc.lang1">French (Native)</span>
+      <span class="tag" data-i18n="parc.lang2">English (Fluent/Professional)</span>
+    </div>
+  </div>
+
+  <div id="section-competences" class="spa-section" style="display:none;">
+    <h1 data-i18n="comp.title">Skills</h1>
+    <h2 data-i18n="comp.subtitle">Technical stack — AI, cloud and systems</h2>
+
+    <h3 data-i18n="comp.ai.h3">AI & LLM — Core Expertise</h3>
+    <p data-i18n="comp.ai.p">Building end-to-end intelligent systems, pipelines, and agents.</p>
+    <div class="tag-container">
+      <span class="tag" style="background:#111; color:#fff;">Python</span>
+      <span class="tag" style="background:#111; color:#fff;">FastAPI</span>
+      <span class="tag" style="background:#111; color:#fff;">LLM APIs (Mistral, Gemini)</span>
+      <span class="tag" style="background:#111; color:#fff;">MCP Protocol</span>
+      <span class="tag" style="background:#111; color:#fff;">RAG Systems</span>
+      <span class="tag">PyTorch</span>
+      <span class="tag">LangChain</span>
+      <span class="tag">Transformers</span>
+      <span class="tag">Voxtral</span>
+      <span class="tag">ElevenLabs</span>
+    </div>
+
+    <h3 data-i18n="comp.cloud.h3">Cloud & DevOps</h3>
+    <p data-i18n="comp.cloud.p">Deploying, scaling, and maintaining infrastructure.</p>
+    <div class="tag-container">
+      <span class="tag" style="background:#111; color:#fff;">Docker & Compose</span>
+      <span class="tag" style="background:#111; color:#fff;">Linux / Shell</span>
+      <span class="tag" style="background:#111; color:#fff;">Git / GitHub</span>
+      <span class="tag">AWS Bedrock</span>
+      <span class="tag">Nginx / TLS</span>
+      <span class="tag">Redis</span>
+      <span class="tag">MariaDB / PostgreSQL</span>
+    </div>
+
+    <h3 data-i18n="comp.sys.h3">Low-Level Systems — 42 Base</h3>
+    <p data-i18n="comp.sys.p">Memory management, networking, and system calls.</p>
+    <div class="tag-container">
+      <span class="tag" style="background:#111; color:#fff;">C / C++</span>
+      <span class="tag" style="background:#111; color:#fff;">Networking (TCP/IP)</span>
+      <span class="tag">Rust</span>
+      <span class="tag">Multithreading / POSIX</span>
+      <span class="tag">Unix / Sockets</span>
+    </div>
+
+    <h3 data-i18n="comp.web.h3">Web & Full-Stack</h3>
+    <div class="tag-container">
+      <span class="tag">TypeScript</span>
+      <span class="tag">Next.js</span>
+      <span class="tag">React</span>
+      <span class="tag">Three.js / WebXR</span>
+      <span class="tag">REST APIs</span>
+      <span class="tag">WebSockets</span>
+      <span class="tag">OAuth2</span>
+    </div>
+
+    <h3 data-i18n="comp.soft.h3">Soft Skills</h3>
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.soft1.t">Leadership & Execution</div></div>
+        <p class="info-desc" data-i18n="comp.soft1.p">Managed an association of 2,000+ members. Built and united a team from scratch. Proven ability to execute and ship under 48h pressure during hackathons.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.soft2.t">Fast Learning & Problem Solving</div></div>
+        <p class="info-desc" data-i18n="comp.soft2.p">Trained in self-directed learning at 42. Capable of learning any technology by building. Able to decompose any complex architecture without assistance.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.soft3.t">International & Negotiation</div></div>
+        <p class="info-desc" data-i18n="comp.soft3.p">Fluent English, participated in hackathons across 4 continents. Secured partnerships and dealt with major tech actors (Algorand, Solana, Ledger).</p>
+      </div>
+    </div>
+
+    <h3 data-i18n="comp.roles.h3">Target Roles</h3>
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.role1.t">LLM Engineering</div></div>
+        <p class="info-desc" data-i18n="comp.role1.p">Fine-tuning, advanced prompt engineering, model evaluation, and inference pipelines.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.role2.t">AI Agents & MCP</div></div>
+        <p class="info-desc" data-i18n="comp.role2.p">Multi-agent systems, orchestration, Model Context Protocol integration, agentic workflows.</p>
+      </div>
+      <div class="info-item">
+        <div class="info-header"><div class="info-title" data-i18n="comp.role3.t">RAG & Knowledge Bases</div></div>
+        <p class="info-desc" data-i18n="comp.role3.p">Retrieval-augmented generation, vector stores, semantic search systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="section-portfolio" class="spa-section" style="display:none;">
+    <h1 data-i18n="portpage.h1">Portfolio</h1>
+    <h2 data-i18n="portpage.h2">Projects built under pressure</h2>
+
+    <h3 data-i18n="portpage.ai">AI Hackathons</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.ad_super">1st Place — Gemini 3 Paris Hackathon</div>
+          <div class="info-meta" data-i18n="port.ad_super.meta">2026 // Google DeepMind</div>
+        </div>
+        <p class="info-desc" data-i18n="port.ad_super.desc">Ad-SuperSense: AI ad injection pipeline for YouTube. Won
+          $50,000 in Gemini API credits + access to Google AIFF founders. Built with FastAPI and Gemini multimodal
+          indexing.</p>
+        <div class="tag-container">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Gemini API</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Plasmo</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.mistral">Top 7 Worldwide — Mistral AI Hackathon</div>
+          <div class="info-meta" data-i18n="port.mistral.meta">2026 // Mistral</div>
+        </div>
+        <p class="info-desc" data-i18n="port.mistral.desc">Vibe AR: Voice-controlled AR code assistant running directly
+          inside a Meta Quest 3. Built with Mistral Large 3, Voxtral, and Three.js/WebXR. Finalist among 100+ global
+          teams.</p>
+        <div class="tag-container">
+          <span class="tag">Mistral Large 3</span>
+          <span class="tag">Voxtral</span>
+          <span class="tag">Three.js / WebXR</span>
+          <span class="tag">ElevenLabs</span>
+          <span class="tag">Meta Quest 3</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="port.mcp">Mistral AI × MCP Hackathon</div>
+          <div class="info-meta" data-i18n="port.mcp.meta">2025 // MCP Protocol</div>
+        </div>
+        <p class="info-desc" data-i18n="port.mcp.desc">Quiz Game MCP: Real-time multiplayer quiz with LLM-generated
+          questions. Implemented an MCP server allowing autonomous AI assistants to play the game securely via API
+          constraints.</p>
+        <div class="tag-container">
+          <span class="tag">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">FastMCP</span>
+          <span class="tag">WebSockets</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="portpage.sys">Low-Level Systems & Infrastructure</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="sys.inc.title">Inception</div>
+          <div class="info-meta" data-i18n="sys.inc.meta">System Administration / Docker</div>
+        </div>
+        <p class="info-desc" data-i18n="sys.inc.desc">Production Docker infrastructure from scratch. A WordPress setup
+          served via Nginx with TLS, backed by MariaDB, and cached with Redis. Built entirely with custom Dockerfiles
+          without raw images.</p>
+        <div class="tag-container">
+          <span class="tag">Docker</span>
+          <span class="tag">Nginx</span>
+          <span class="tag">Redis</span>
+          <span class="tag">MariaDB</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="sys.irc.title">ft_irc</div>
+          <div class="info-meta" data-i18n="sys.irc.meta">C++ / Networking</div>
+        </div>
+        <p class="info-desc" data-i18n="sys.irc.desc">RFC-compliant IRC server in C++. Features non-blocking I/O with
+          poll(), channel management, operator privileges, private messaging, and concurrent clients.</p>
+        <div class="tag-container">
+          <span class="tag">C++</span>
+          <span class="tag">TCP/IP Sockets</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="sys.trans.title">ft_transcendence</div>
+          <div class="info-meta" data-i18n="sys.trans.meta">Full-Stack Web</div>
+        </div>
+        <p class="info-desc" data-i18n="sys.trans.desc">Real-time multiplayer Pong application with WebSockets, OAuth2,
+          matchmaking, user profiles, and a multi-service Docker architecture.</p>
+        <div class="tag-container">
+          <span class="tag">TypeScript</span>
+          <span class="tag">WebSockets</span>
+          <span class="tag">OAuth2</span>
+          <span class="tag">Docker</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="sys.mini.title">Minishell</div>
+          <div class="info-meta" data-i18n="sys.mini.meta">C / Unix Systems</div>
+        </div>
+        <p class="info-desc" data-i18n="sys.mini.desc">Unix shell written from scratch in C. Complete lexer/parser,
+          pipes, redirections, variable expansion, signal handling, and nested quotes.</p>
+        <div class="tag-container">
+          <span class="tag">C</span>
+          <span class="tag">Unix Signals</span>
+          <span class="tag">AST</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="portpage.cloud">Cloud & Infrastructure</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="cloud.portfolio.title">sachamorin.fr — Serverless Portfolio Deployment</div>
+          <div class="info-meta" data-i18n="cloud.portfolio.meta">2026 // AWS · Terraform · OVH</div>
+        </div>
+        <p class="info-desc" data-i18n="cloud.portfolio.desc">Full production-grade AWS deployment of this portfolio. Serverless architecture: S3 static hosting behind CloudFront CDN, Lambda visit counter, API Gateway, DynamoDB — all provisioned with Terraform IaC. Custom domain sachamorin.fr via OVH Cloud with ACM SSL certificate and Route 53 DNS. AWS Budgets for FinOps monitoring.</p>
+        <div class="tag-container">
+          <span class="tag">AWS S3</span>
+          <span class="tag">CloudFront</span>
+          <span class="tag">Lambda</span>
+          <span class="tag">DynamoDB</span>
+          <span class="tag">ACM</span>
+          <span class="tag">Route 53 DNS</span>
+          <span class="tag">IAM</span>
+          <span class="tag">Terraform IaC</span>
+          <span class="tag">OVH Cloud</span>
+          <span class="tag">FinOps</span>
+          <span class="tag">Monitoring</span>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 data-i18n="portpage.web3">Web3 Hackathons</h3>
+    <div class="info-list">
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="web3.ape.title">APE ID</div>
+          <div class="info-meta" data-i18n="web3.ape.meta">EthGlobal Bangkok 2024 // $20,000+ Prize</div>
+        </div>
+        <p class="info-desc" data-i18n="web3.ape.desc">Web3 passport linking ENS subdomains to NFC wristbands. Scanning
+          the wristband proves on-chain identity and grants event access.</p>
+        <div class="tag-container">
+          <span class="tag">TypeScript</span>
+          <span class="tag">Next.js</span>
+          <span class="tag">Wagmi</span>
+          <span class="tag">Base L2</span>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-header">
+          <div class="info-title" data-i18n="web3.algo.title">Algorand ASA Minter</div>
+          <div class="info-meta" data-i18n="web3.algo.meta">Blockspace Hackathon // 1st Place</div>
+        </div>
+        <p class="info-desc" data-i18n="web3.algo.desc">dApp to mint NFTs and tokens (ASAs) on the Algorand TestNet
+          using a Svelte frontend and Flask backend.</p>
+        <div class="tag-container">
+          <span class="tag">Svelte</span>
+          <span class="tag">Python Flask</span>
+          <span class="tag">Algorand SDK</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-left">© Sacha Morin</div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <script>
+    fetch(`${VISIT_API_URL}/visit`, { method: 'POST' }).catch(e => console.error(e));
+    
+    // SPA Tab Logic
+    function showSection(sectionId, element) {
+      // Hide all sections
+      document.querySelectorAll('.spa-section').forEach(sec => {
+        sec.style.display = 'none';
+        sec.classList.remove('active');
+      });
+      // Show targeted section
+      const target = document.getElementById('section-' + sectionId);
+      if (target) {
+        target.style.display = 'block';
+        target.classList.add('active');
+      }
+      
+      // Update nav active state (Desktop)
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      if (element && element.closest('.nav-links')) {
+        element.classList.add('active');
+      } else {
+        // Fallback if triggered from elsewhere
+        const fallback = document.querySelector(`.nav-links a[onclick*="${sectionId}"]`);
+        if (fallback) fallback.classList.add('active');
+      }
+      
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+  </script>
+</body>
+</html>
