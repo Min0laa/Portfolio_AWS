@@ -2,6 +2,8 @@
 
 > **Live:** [https://sachamorin.fr](https://sachamorin.fr)
 
+![Portfolio Preview](docs/preview.png)
+
 A production-grade, fully serverless portfolio deployed on AWS — built from scratch and automated with Terraform IaC. Custom domain via OVH Cloud, HTTPS enforced via ACM + CloudFront.
 
 ---
@@ -63,27 +65,18 @@ I built this portfolio to turn AWS theory into a real, end-to-end cloud project 
 
 ## 🏗️ Architecture
 
-```
-User
- │
- ▼
-OVH Cloud DNS (sachamorin.fr)
- │  Alias → CloudFront
- ▼
-CloudFront Distribution (HTTPS · ACM cert us-east-1)
- │  OAC (Origin Access Control)
- ▼
-S3 Private Bucket (static site)
+![AWS Architecture](docs/architecture.png)
 
-User (visit counter)
- │
- ▼
-API Gateway → Lambda (Python) → DynamoDB
-```
+CloudFront securely delivers the website from a **private S3 bucket** using **OAC (Origin Access Control)**. The ACM certificate is provisioned in `us-east-1` to meet CloudFront's regional requirement.
 
-**Request flow:**
-- Static assets served via CloudFront CDN from a private S3 bucket (OAC)
-- Visit counter: frontend JS → API Gateway → Lambda → DynamoDB → response
+---
+
+## 🔄 Request Flow
+
+![Request Flow](docs/request_flow.png)
+
+- **Static content** → OVH DNS resolves to CloudFront → CloudFront fetches from private S3 via OAC
+- **Visit counter** → API Gateway → Lambda (Python) → DynamoDB → JSON response displayed on frontend
 
 ---
 
