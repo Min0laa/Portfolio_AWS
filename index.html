@@ -553,11 +553,19 @@
 
   <footer>
     <div class="footer-left">© Sacha Morin</div>
+    <div class="footer-right"><span id="visit-counter">--</span> visits</div>
   </footer>
 
   <script src="i18n.js"></script>
   <script>
-    fetch(`${VISIT_API_URL}/visit`, { method: 'POST' }).catch(e => console.error(e));
+    fetch(VISIT_API_URL)
+      .then(res => res.json())
+      .then(data => {
+        if(data.visits) {
+          document.getElementById('visit-counter').innerText = data.visits;
+        }
+      })
+      .catch(e => console.error('Error fetching visit count:', e));
     
     // SPA Tab Logic
     function showSection(sectionId, element) {
